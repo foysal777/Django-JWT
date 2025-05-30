@@ -1,7 +1,9 @@
-
-from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.contrib.auth.models import User
 
-class CustomUser(AbstractUser):
-    is_verified = models.BooleanField(default=False)  
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     otp = models.CharField(max_length=6, blank=True, null=True)
+
+    def __str__(self):  
+        return self.user.username

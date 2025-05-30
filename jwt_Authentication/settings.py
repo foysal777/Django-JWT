@@ -15,7 +15,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-AUTH_USER_MODEL = 'jwt_auth.CustomUser'
+
 
 # Application definition
 
