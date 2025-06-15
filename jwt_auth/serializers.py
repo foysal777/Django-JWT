@@ -49,7 +49,7 @@ class RegistrationSerializer(serializers.ModelSerializer):
         send_mail(
             email_subject,
             email_body,
-            'mdmamun340921@gmail.com', 
+            'foysal.cse11@gmail.com', 
             [user.email]
         )
         
