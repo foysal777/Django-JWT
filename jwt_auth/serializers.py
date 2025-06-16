@@ -1,9 +1,17 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from .utils import generate_otp
-from .models import Profile
+from .models import Profile , Students
 from django.core.mail import send_mail
 from rest_framework_simplejwt.tokens import RefreshToken
+
+
+
+class StudentSerializers(serializers.ModelSerializer):
+    class Meta :
+        Model = Students
+        fields = '__all__'
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

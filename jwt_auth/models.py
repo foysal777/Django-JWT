@@ -7,3 +7,11 @@ class Profile(models.Model):
 
     def __str__(self):  
         return self.user.username
+    
+class Students(models.Model):
+    name  = models.CharField(max_length=100)
+    age = models.ImageField()
+    email = models.CharField()
+    
+    def __str__(self):
+        return self.name
