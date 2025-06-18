@@ -1,4 +1,4 @@
-from .models import Profile
+from .models import Profile , Students
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -6,12 +6,26 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from .serializers import UserSerializer, RegistrationSerializer, LoginSerializer, UserLoginSerializer
+from .serializers import StudentSerializers, UserSerializer, RegistrationSerializer, LoginSerializer, UserLoginSerializer
 from django.shortcuts import get_object_or_404
 from .utils import generate_otp
 from django.core.mail import send_mail
 from rest_framework_simplejwt.tokens import RefreshToken,TokenError
 from rest_framework.permissions import IsAuthenticated
+
+
+class StudentApi(APIView):
+    def get(self, request):
+        student = Students.objects.all()
+        studentserializers = studentserializers(student , many = True)
+        return Response(studentserializers.data)
+    
+    def post(self, request):
+        serializers = StudentSerializers(data = request.data)
+        if serializers.is_valid():
+            serializers.save
+            return Response(serializers.data)
+        return Response(serializers.errors)
 
 class UserAPIView(APIView):
     permission_classes = [IsAuthenticated]
