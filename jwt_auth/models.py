@@ -11,7 +11,7 @@ class Profile(models.Model):
 class Students(models.Model):
     name  = models.CharField(max_length=100)
     age = models.ImageField()
-    email = models.CharField()
+    email = models.EmailField()
     
     def __str__(self):
         return self.name

@@ -4,6 +4,7 @@ from .views import (
     RegisterAPIView, VerifyOTPApiView,ResendOTPApiView,
      LoginAPIView,
      LogoutAPIView, 
+     StudentApi
 )
 from rest_framework_simplejwt.views import (
     TokenRefreshView,
@@ -11,6 +12,7 @@ from rest_framework_simplejwt.views import (
 
 urlpatterns = [
    
+    path('student/', StudentApi.as_view(), name='student'),  
     path('user_all/', UserAPIView.as_view(), name='user-list'),  
     path('register/', RegisterAPIView.as_view(), name='register'),
     path('verify_otp/', VerifyOTPApiView.as_view(), name='verify-otp'),

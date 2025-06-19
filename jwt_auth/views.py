@@ -17,7 +17,7 @@ from rest_framework.permissions import IsAuthenticated
 class StudentApi(APIView):
     def get(self, request):
         student = Students.objects.all()
-        studentserializers = studentserializers(student , many = True)
+        studentserializers = StudentSerializers(student , many = True)
         return Response(studentserializers.data)
     
     def post(self, request):
